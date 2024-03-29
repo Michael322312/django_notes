@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <style>
+        .paper-note {
+        background-color: #f8f9fa; /* Default background color */
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        }
+        .note-label {
+        font-weight: bold;
+        }
+    </style>
+    <div class="card mb-3 m-4" style="max-width: 18rem;" style="background-color: {{ random_color }}">
+        <div class="card-header">Note</div>
+        <div class="card-body">
+          <h5 class="card-title">{{note.title}}</h5>
+          <p class="card-text">{{note.text}}</p>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS (Optional, only if you need it for something else) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to generate a random color
+        function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+
+        // Apply random color to paper note
+        document.addEventListener('DOMContentLoaded', function() {
+        var paperNote = document.querySelector('.card');
+        var randomColor = getRandomColor();
+        paperNote.style.backgroundColor = randomColor;
+        });
+    </script>
+
+
+{% endblock body %}

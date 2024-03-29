@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <p class="h2 m-3">Here is list of notes</p>
+    <ul class="list-group w-50 m-5">
+        {% for note in notes %}
+            <a href="{% url 'notes:note_detail' note.id %}"><li class="list-group-item">{{note.title}}</li></a>
+            <br>
+        {% empty %}
+            <p class="h3 m-5"> The list of note is empty</p>
+        {% endfor %}
+    </ul>
+{% endblock body %}
